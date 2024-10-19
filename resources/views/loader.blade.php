@@ -14,9 +14,15 @@
 
     </head>
     <body class="font-sans antialiased bg-gradient-to-b from-zinc-900 to-zinc-950 text-white/50">
-        <div class="flex h-screen">
-            <img src="assets/lantern.png" class="mx-auto w-20 my-auto lg:w-32">
-            <audio src="assets/horror.mp3" autoplay></audio>
+        <div id="loader" class="flex h-screen">
+            {{-- <img src="assets/lantern.png" class="mx-auto w-20 my-auto lg:w-32"> --}}
+            <video class="mx-auto w-32 my-auto lg:w-48" autoplay loop muted>
+                <source src="assets/lantern.mp4" type="video/mp4"; codecs="hvc1">
+                <source src="assets/lantern.webm" type="video/webm">
+            </video>
+        </div>
+        <div id="layout">
+            
         </div>
     </body>
 </html>
