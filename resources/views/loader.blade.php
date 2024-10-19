@@ -15,7 +15,8 @@
     </head>
     <body class="font-sans antialiased bg-gradient-to-b from-zinc-900 to-zinc-950 text-white/50">
         <div class="flex h-screen">
-            <img src="images/lantern.png" class="mx-auto w-20 my-auto lg:w-32">
-        </div>    
+            <img src="assets/lantern.png" class="mx-auto w-20 my-auto lg:w-32">
+            <audio src="assets/horror.mp3" autoplay></audio>
+        </div>
     </body>
 </html>
