@@ -14,7 +14,6 @@
         @vite('resources/css/app.css')
 
         <script>
-            // Convert PHP data to JSON
             var tables = @json($tables);
             console.log(tables);
         </script>
@@ -22,7 +21,6 @@
     </head>
     <body onload="seater()" class="font-pops antialiased bg-gradient-to-b from-zinc-950 to-black text-white">
         <div id="loader" class="flex h-screen">
-            {{-- <img src="assets/lantern.png" class="mx-auto w-20 my-auto lg:w-32"> --}}
             <video class="mx-auto w-32 my-auto lg:w-48" autoplay loop muted>
                 <source src="assets/lantern.webm" type="video/webm">
                 <source src="assets/lantern.hevc.mov" type="video/quicktime">
@@ -734,16 +732,6 @@
                         <text class="cls-2" transform="translate(2284.49 3373.34) scale(1.03 1)">225</text>
                     </g>
                 </svg>
-                {{-- <img src="assets/layouts.svg" alt="3D Layout" class="w-screen px-3 py-3 my-auto"> --}}
-                {{-- <img src="assets/layoutimg.png" alt="3D Layout" class="absolute -z-50 w-screen px-3 py-3 my-auto"> --}}
-                
-                {{-- <div class="absolute grid grid-cols-[repeat(15,minmax(0,1fr))] grid-rows-[repeat(15,minmax(0,1fr))] gap-px">
-                    @for ($table = 1; $table < 226; $table++)
-                        <div class="bg-gray-500 rounded-sm text-xxs flex w-4 h-5">
-                            <p class="mx-auto my-auto">{{ $table }}</p>
-                        </div>
-                    @endfor
-                </div> --}}
             </div>
             <div class="row-span-1 flex flex-col flex-grow lg:justify-start">
                 <div class="lg:ml-32 flex flex-col my-auto pt-5 mb-8 lg:my-0">
@@ -754,10 +742,6 @@
             </div>
         </div>
         <script>
-            // function seater() {
-            //     alert("Image is loaded");
-            // };
-
             function seater() {
                 tables.forEach(table => {
                     if (table.active == 1) {
