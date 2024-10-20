@@ -15,6 +15,9 @@ export default {
                 pops: ['Poppins', ...defaultTheme.fontFamily.sans],
                 mont: ['Montserrat', ...defaultTheme.fontFamily.sans],
             },
+            fontSize: {
+                'xxs': '7px',
+              },
         },
     },
     plugins: [],

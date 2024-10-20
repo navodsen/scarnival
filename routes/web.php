@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\Seater;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('loader');
+    return view('welcome');
 });
+
+Route::get('scarnival', [Seater::class, 'index']);
+
+Route::get('sbacklay', [Seater::class, 'backLayout']);
