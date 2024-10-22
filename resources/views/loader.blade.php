@@ -15,7 +15,6 @@
 
         <script>
             var tables = @json($tables);
-            console.log(tables);
         </script>
 
     </head>
@@ -754,7 +753,7 @@
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
                 document.getElementById('layout').classList.remove('hidden');
-            }, 5000);
+            }, 0);
         </script>
     </body>
 </html>

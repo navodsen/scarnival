@@ -9,16 +9,14 @@ class Seater extends Controller
 {
     public function index() {
         $data['tables'] = Table::layout();
-        $data['ss'] = "sss";
 
         return view('loader', $data);
     }
 
-    // public function backLayout() {
+    public function backLayout() {
         
-    //     $data['tables'] = Table::layout();
-    //     $data['ss'] = "sss";
+        $data['tables'] = Table::layout();
         
-    //     return view('loader', $data);
-    // }
+        return view('seaterAdmin', $data);
+    }
 }
