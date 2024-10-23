@@ -15,9 +15,14 @@ export default {
                 pops: ['Poppins', ...defaultTheme.fontFamily.sans],
                 mont: ['Montserrat', ...defaultTheme.fontFamily.sans],
             },
+
             fontSize: {
                 'xxs': '7px',
-              },
+            },
+
+            gridTemplateColumns: {
+                '15': 'repeat(15, minmax(0, 1fr))',
+            },
         },
     },
     plugins: [],

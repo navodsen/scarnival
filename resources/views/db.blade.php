@@ -17,25 +17,45 @@
             var tables = @json($tables);
         </script>
 
-        <style>
-            .c0 {
-                color:green
-            }
-            .c1 {
-                color:red
-            }
-        </style>
-
     </head>
     <body class="font-pops antialiased bg-gradient-to-b from-zinc-950 to-black text-white">
-        <div class="grid grid-cols-[repeat(15,minmax(0,1fr))] gap-4">
-            @foreach ($tables as $table)
-                <div class="c{{ $table->active }} border-white border w-fit">
-                    {{ $table->id }}
-                </div>                
-            @endforeach
-        </div>
+        <form action="#" class="mx-4 my-6">
+            <input id="search" placeholder="Search" onchange="search()" class="text-sm w-full rounded-3xl px-4 py-2 bg-transparent bg-gradient-to-br from-[#ffffff5b] to-[#ffffff30]" type="text" />
+        </form>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>T</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>T</th>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>Navod Senarathne</td>
+                <td>076 123 2727</td>
+                <td>8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>Ruvin Perera</td>
+                <td>076 123 3877</td>
+                <td>3</td>
+                <td>Navod Senarathne</td>
+                <td>076 123 2727</td>
+                <td>5</td>
+            </tr>
+        </table>
         <script>
+            function search() {
+
+            }
+
             // function seater() {
             //     tables.forEach(table => {
             //         if (table.active == 1) {
