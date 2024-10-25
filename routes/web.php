@@ -10,3 +10,5 @@ Route::get('/', function () {
 Route::get('scarnival', [Seater::class, 'index']);
 
 Route::get('sbacklay', [Seater::class, 'backLayout']);
+
+Route::post('/update-table', [Seater::class, 'updateTable']);
