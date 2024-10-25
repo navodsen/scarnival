@@ -47,7 +47,7 @@
                             }
 
                             .cls-2 {
-                                font-size: 48px;
+                                font-size: 42px;
                                 font-family: Poppins-SemiBold, Poppins;
                                 font-weight: 600;
                             }
