@@ -753,7 +753,7 @@
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
                 document.getElementById('layout').classList.remove('hidden');
-            }, 0);
+            }, 2000);
         </script>
     </body>
 </html>
