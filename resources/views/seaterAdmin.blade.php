@@ -65,7 +65,7 @@
 
         <div class="my-4 mx-4 grid grid-cols-[repeat(15,minmax(0,1fr))] gap-1 text-xs font-semibold">
             @foreach ($tables as $table)
-                <div id="div{{$table->id}}" onclick="confirm({{ $table->id }}, {{$table->active}})" class="c{{ $table->active }} bg-white w-1/15 h-9 rounded-md cursor-pointer flex justify-center items-center">
+                <div id="div{{$table->id}}" onclick="confirm({{ $table->id }},{{$table->active}})" class="c{{ $table->active }} bg-white w-1/15 h-9 rounded-md cursor-pointer flex justify-center items-center">
                     {{ $table->id }}
                 </div>                
             @endforeach
@@ -79,6 +79,7 @@
             function cancel() {
                 const popup = document.getElementById("dConfirm");
                 popup.classList.toggle('hidden'); // hiding
+                document.getElementById('yBtn').innerText = "Confirm";
             }
 
             function confirm(id, active) {
@@ -94,6 +95,32 @@
                 popup.classList.toggle('hidden'); // making it visible
             }
 
+            // function bookun() {
+            //     if (tableId !== null && tableState !== null) {
+            //         // Make AJAX call to update the table in the DB
+            //         fetch('/update-table', {
+            //             method: 'POST',
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            //             },
+            //             body: JSON.stringify({ id: tableId, active: tableState })
+            //         })
+            //         .then(response => response.json())
+            //         .then(data => {
+            //             // Refresh the table view based on returned data
+            //             console.log(data);
+                        
+            //             updateTables(data.tables);
+            //             document.getElementById('dConfirm').classList.toggle('hidden');
+            //         })
+            //         .catch(error => {
+            //             console.error('Errorlogger:', error);
+            //             document.getElementById('yBtn').innerText = "Error Occured";
+            //         })
+            //     }
+            // }
+
             function bookun() {
                 if (tableId !== null && tableState !== null) {
                     // Make AJAX call to update the table in the DB
@@ -105,18 +132,35 @@
                         },
                         body: JSON.stringify({ id: tableId, active: tableState })
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            // If response is not OK, throw an error with the status
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.json();  // Parse the response JSON
+                    })
                     .then(data => {
                         // Refresh the table view based on returned data
-                        updateTables(data.tables);
-                        document.getElementById('dConfirm').classList.toggle('hidden');
+                        console.log(data);
+                        
+                        if (data && data.tables) {
+                            updateTables(data.tables);  // Update tables if data exists
+                            document.getElementById('dConfirm').classList.toggle('hidden');
+                        } else {
+                            console.error('Invalid data structure:', data);
+                            document.getElementById('yBtn').innerText = "Data error";
+                        }
                     })
                     .catch(error => {
-                        console.error('Error:', error);
-                        document.getElementById('yBtn').innerText = "Error Occured";
-                    })
+                        // Improved error handling
+                        console.error('Errorlogger:', error);
+                        document.getElementById('yBtn').innerText = "Error Occurred";
+                    });
+                } else {
+                    console.error('Invalid tableId or tableState');
                 }
             }
+
 
             function updateTables(tables) {
                 tables.forEach(table => {
@@ -124,11 +168,11 @@
                     if (table.active == 1) {
                         tableDiv.classList.remove('c0');
                         tableDiv.classList.add('c1');
-                        tableDiv.setAttribute('onclick','confirm('+ table.id +','+ table.active +')');
                     } else {
                         tableDiv.classList.remove('c1');
                         tableDiv.classList.add('c0');
                     }
+                    tableDiv.setAttribute('onclick','confirm('+ table.id +','+ table.active +')');
                 });
             }
         </script>

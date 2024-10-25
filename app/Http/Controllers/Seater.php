@@ -31,12 +31,10 @@ class Seater extends Controller
                 $table->save();
             }
             
-
             // Return updated list of tables to update the UI
             $tables = Table::layout();
             return response()->json(['tables' => $tables]);
         }
-
         return response()->json(['error' => 'Table not found'], 404);
     }
 }
